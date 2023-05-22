@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ExpenseService } from '../expense.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ListComponent {
 
+  constructor(public service: ExpenseService, private router: Router){
+    this.service.load()
+  }
 }
