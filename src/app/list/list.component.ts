@@ -11,5 +11,11 @@ export class ListComponent {
 
   constructor(public service: ExpenseService, private router: Router){
     this.service.load()
+    this.service.copyForFilter()
+    this.service.getCategories()
+  }
+
+  filter(y:string){
+    this.service.filter(y)
   }
 }

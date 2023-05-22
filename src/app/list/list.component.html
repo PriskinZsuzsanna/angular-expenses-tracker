@@ -1,12 +1,22 @@
 <section class="container list-container">
     <h2>My Expenses</h2>
+    <div class="filter">
+        <select #categoryItems (change)="filter(categoryItems.value)" name="" id="">
+            <option value="all" [defaultSelected]="true">Show All Categories</option>
+            <option *ngFor="let c of this.service.categories" value="{{c}}">{{c}}</option>
+        </select>
+    </div>
     <div class="list">
-        <div *ngFor="let exp of this.service.expenses" class="expense">
-            <div class="left">
-                <p>{{exp.title}}</p>
-                <p>{{exp.amount}} $</p>
+        <div *ngFor="let exp of this.service.filteredExpenses" class="expense">
+            <div class="exp-div">
+                <div class="left">
+                    <p>{{exp.title}}</p>
+                    <p>{{exp.amount}} $</p>
+                </div>
+                <p class="right">{{exp.category}}</p>
             </div>
-            <p class="right">{{exp.category}}</p>
+            <button>Edit</button>
+            <button>Delete</button>
         </div>
     </div>
 </section>

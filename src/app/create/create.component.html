@@ -11,9 +11,9 @@
         <label>Choose or Add Category:</label>
         <input list="categories" name="category" id="category" [(ngModel)]="this.actual.category">
     
-        <!--datalist id="categories">
-          <option *ngFor="let c of this.service.listedCategories" value="{{c}}">{{c}}</option>
-        </datalist-->
+        <datalist id="categories">
+          <option *ngFor="let c of this.service.categories" value="{{c}}">{{c}}</option>
+        </datalist>
 
         <button (click)="create()">Add Expense</button>
 

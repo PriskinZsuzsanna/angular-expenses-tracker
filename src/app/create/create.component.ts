@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class CreateComponent {
   actual: Expense = new Expense()
   constructor(public service: ExpenseService, private router: Router){
+    this.service.getCategories()
   }
 
   create(){
