@@ -1,0 +1,21 @@
+<section class="container create-container">
+    <h2>Add Expense</h2>
+    <div class="form">
+
+        <label>Name</label>
+        <input [(ngModel)]="actual.title" type="text">
+
+        <label>Amount</label>
+        <input [(ngModel)]="actual.amount" type="number">
+
+        <label>Choose or Add Category:</label>
+        <input list="categories" name="category" id="category" [(ngModel)]="this.actual.category">
+    
+        <!--datalist id="categories">
+          <option *ngFor="let c of this.service.listedCategories" value="{{c}}">{{c}}</option>
+        </datalist-->
+
+        <button (click)="create()">Add Expense</button>
+
+    </div>
+</section>

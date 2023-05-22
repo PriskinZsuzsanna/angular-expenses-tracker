@@ -1,0 +1,24 @@
+.form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 1rem;
+}
+
+label {
+    align-self: flex-start;
+}
+
+input,
+button {
+    width: 100%;
+    padding: .5rem;
+    border-radius: 2rem;
+}
+
+button {
+    margin-top: 1rem;
+}
