@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Expense } from './expense';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ExpenseService {
   filteredExpenses: Array<Expense> = new Array<Expense>()
   categories: Array<String> = new Array<String>
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   //expenses
   load(){
@@ -39,10 +40,31 @@ export class ExpenseService {
       }
       
     })
-    console.log(this.expenses)
-    console.log(this.filteredExpenses)
   }
 
+  delete(id:string){
+    this.expenses = this.expenses.filter(exp => {
+      return exp.id !== id
+    })
+    this.filteredExpenses = this.expenses
+    this.getCategories()
+    this.save()
+  }
+
+  update(exp: Expense){
+    let old = this.find(exp.id);
+    old.title = exp.title;
+    old.amount = exp.amount;
+    old.category = exp.category;
+    console.log(this.expenses)
+    console.log(this.filteredExpenses)
+    this.getCategories();
+    this.save();
+  }
+
+  find(id: string) : Expense {
+    return this.expenses.filter(t => t.id == id)[0];
+  }
 
 
   //categories

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ExpenseService } from '../expense.service';
 import { Router } from '@angular/router';
+import { Expense } from '../expense';
 
 @Component({
   selector: 'app-list',
@@ -17,5 +18,13 @@ export class ListComponent {
 
   filter(y:string){
     this.service.filter(y)
+  }
+
+  delete(exp:Expense){
+    this.service.delete(exp.id)
+  }
+
+  edit(exp: Expense){
+    this.router.navigate(['edit', exp.id])
   }
 }
