@@ -14,6 +14,7 @@ export class ListComponent {
     this.service.load()
     this.service.copyForFilter()
     this.service.getCategories()
+    this.service.getBalance()
   }
 
   filter(y:string){

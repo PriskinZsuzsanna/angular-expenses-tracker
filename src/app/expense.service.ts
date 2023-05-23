@@ -9,6 +9,8 @@ export class ExpenseService {
   expenses: Array<Expense> = new Array<Expense>()
   filteredExpenses: Array<Expense> = new Array<Expense>()
   categories: Array<String> = new Array<String>
+  expenceAmounts: Array<Number> = new Array<Number>
+  balance:Number = 0
 
   constructor(private router: Router) { }
 
@@ -66,7 +68,6 @@ export class ExpenseService {
     return this.expenses.filter(t => t.id == id)[0];
   }
 
-
   //categories
   getCategories(){
     this.categories = []
@@ -74,6 +75,15 @@ export class ExpenseService {
       this.categories.push(exp.category)
     })
     this.categories = [...new Set(this.categories)]
+  }
+
+  //total
+  getBalance(){
+    this.expenceAmounts = []
+    this.expenses.map(exp=> {
+      this.expenceAmounts.push(exp.amount)
+    })
+    //this.balance = this.expenceAmounts.reduce((acc, curr) => acc + curr, 0)
   }
 
 
