@@ -6,7 +6,7 @@
         <input [(ngModel)]="actual.title" type="text">
 
         <label>Amount</label>
-        <input [(ngModel)]="actual.amount" type="number">
+        <input [(ngModel)]="actual.amount" step="100" type="number">
 
         <label>Choose or Add Category:</label>
         <input list="categories" name="category" id="category" [(ngModel)]="this.actual.category">

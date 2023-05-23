@@ -73,4 +73,18 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
+@media screen and (max-width: 600px){
+    body {
+        font-size: .7rem;
+    }
+
+    button {
+        font-size: .7rem;
+    }
+
+    ul {
+        gap: .7rem;
+    }
+}
+
 

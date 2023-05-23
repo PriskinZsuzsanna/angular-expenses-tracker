@@ -9,8 +9,8 @@ export class ExpenseService {
   expenses: Array<Expense> = new Array<Expense>()
   filteredExpenses: Array<Expense> = new Array<Expense>()
   categories: Array<String> = new Array<String>
-  expenceAmounts: Array<Number> = new Array<Number>
-  balance:Number = 0
+  expenceAmounts: Array<number> = new Array<number>()
+  balance:number = 0
 
   constructor(private router: Router) { }
 
@@ -83,7 +83,9 @@ export class ExpenseService {
     this.expenses.map(exp=> {
       this.expenceAmounts.push(exp.amount)
     })
-    //this.balance = this.expenceAmounts.reduce((acc, curr) => acc + curr, 0)
+    console.log(this.expenceAmounts)
+    this.balance = this.expenceAmounts.reduce((acc, curr) => acc + curr, 0)
+    console.log(this.balance)
   }
 
 

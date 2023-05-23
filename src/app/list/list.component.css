@@ -1,3 +1,12 @@
+.balance {
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    box-shadow: 1px 1px 2px var(--primary);
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--light), var(--white));
+    font-weight: 500;
+}
+
 .filter {
     width: 100%;
     display: flex;
@@ -74,7 +83,25 @@ button {
     min-width: 70px;
     border-radius: 2rem;
     box-shadow: 1px 1px 2px var(--primary);
-    background: var(--light);
+    background: linear-gradient(90deg, var(--light), var(--white));
+    
     color: var(--primary);
     cursor: pointer;
+}
+
+@media screen and (max-width:600px){
+    .right {
+        min-width: 60px;
+        padding: 1rem 1rem 1rem .5rem;
+    }
+    
+    .left {
+        padding: .5rem 1rem .5rem .8rem;
+        flex-direction: column;
+    }
+
+    button {
+        min-width: 50px;
+        padding: .8rem .5rem;
+    }
 }

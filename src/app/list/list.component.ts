@@ -23,6 +23,7 @@ export class ListComponent {
 
   delete(exp:Expense){
     this.service.delete(exp.id)
+    this.service.getBalance()
   }
 
   edit(exp: Expense){
