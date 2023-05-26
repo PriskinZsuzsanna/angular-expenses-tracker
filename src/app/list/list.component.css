@@ -34,7 +34,6 @@
 select {
     width: 30%;
     max-width: 400px;
-    font-weight: bold;
     padding: 1rem;
     box-shadow: 1px 1px 2px var(--primary);
     background: linear-gradient(90deg, var(--light), var(--white));
@@ -51,9 +50,9 @@ option {
 }
 
 .filter button {
-    font-weight: bold;
     border-radius: 2rem;
     padding: 1rem 2rem;
+    font-size: 1em;
 }
 
 h3 {
@@ -114,6 +113,7 @@ button {
     box-shadow: 1px 1px 2px var(--primary);
     background: linear-gradient(90deg, var(--light), var(--white));
     color: var(--primary);
+    font-size: 1em;
     cursor: pointer;
     position: relative;
     overflow: hidden;

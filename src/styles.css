@@ -76,6 +76,20 @@ h2 {
 
 @media screen and (max-width: 600px){
     body {
+        font-size: .9rem;
+    }
+
+    button {
+        font-size: .9rem;
+    }
+
+    ul {
+        gap: .7rem;
+    }
+}
+
+@media screen and (max-width: 460px){
+    body {
         font-size: .7rem;
     }
 
