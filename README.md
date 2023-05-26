@@ -17,5 +17,6 @@ https://priskinzsuzsanna.github.io/angular-expenses-tracker/
 
 Screenshot
 
-![png3](https://github.com/PriskinZsuzsanna/angular-car-catalog/assets/121173949/cc30614a-201c-4a3d-8b42-18aa4d8525cd)
+![png1](https://github.com/PriskinZsuzsanna/angular-three-column-card-frontend-mentor/assets/121173949/de990245-ee86-45de-8581-3c7b4d515f2b)
+
 
