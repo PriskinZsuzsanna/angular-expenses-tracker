@@ -7,6 +7,14 @@
             <option *ngFor="let c of this.service.categories" value="{{c}}">{{c}}</option>
         </select>
     </div>
+    <div class="buttons">
+        <button *ngIf="!this.service.filterPlus" (click)="this.service.showPlus()">Show Plus</button>
+        <button *ngIf="this.service.filterPlus" (click)="this.service.showPlus()">Show All</button>
+        <button *ngIf="!this.service.filterMinus" (click)="this.service.showMinus()">Show Minus</button>
+        <button *ngIf="this.service.filterMinus" (click)="this.service.showMinus()">Show All</button>
+    </div>
+    <h3 *ngIf="this.service.filterPlus">Plus</h3>
+    <h3 *ngIf="this.service.filterMinus">Minus</h3>
     <div class="list">
         <div *ngFor="let exp of this.service.filteredExpenses" class="expense">
             <div class="exp-div">
@@ -19,5 +27,6 @@
             <button (click)="edit(exp)">Edit</button>
             <button (click)="delete(exp)">Delete</button>
         </div>
+
     </div>
 </section>

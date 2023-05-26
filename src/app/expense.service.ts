@@ -10,41 +10,71 @@ export class ExpenseService {
   filteredExpenses: Array<Expense> = new Array<Expense>()
   categories: Array<String> = new Array<String>
   expenceAmounts: Array<number> = new Array<number>()
-  balance:number = 0
+  balance: number = 0
+  filterPlus: boolean = false
+  filterMinus: boolean = false
 
   constructor(private router: Router) { }
 
   //expenses
-  load(){
+  load() {
     this.expenses = JSON.parse(localStorage.getItem('expenses') ?? "[]")
   }
 
-  copyForFilter(){
+  copyForFilter() {
     this.filteredExpenses = this.expenses
   }
 
-  save(){
+  save() {
     localStorage.setItem('expenses', JSON.stringify(this.expenses))
   }
 
-  add(exp:Expense){
+  add(exp: Expense) {
     this.expenses.push(exp)
     this.save()
   }
 
-  filter(option:string){
+  filter(option: string) {
     //this.load()
+    this.filterMinus = false
+    this.filterPlus = false
     this.filteredExpenses = this.expenses.filter(items => {
-      if(option == "all"){
+      if (option == "all") {
         return this.filteredExpenses
       } else {
         return items.category == option
       }
-      
+
     })
   }
 
-  delete(id:string){
+  showPlus() {
+    this.filterMinus = false
+    if(this.filterPlus == false){
+      this.filteredExpenses = this.expenses.filter(item => {
+        this.filterPlus = true
+        return item.amount > 0
+      })
+    } else {
+      this.filterPlus = false
+      this.filteredExpenses = this.expenses
+    }
+  }
+  showMinus() {
+    this.filterPlus = false
+    if(this.filterMinus == false){
+      this.filteredExpenses = this.expenses.filter(item => {
+        this.filterMinus = true
+        return item.amount < 0
+      })
+    } else {
+      this.filterMinus = false
+      this.filteredExpenses = this.expenses
+    }
+  }
+
+
+  delete(id: string) {
     this.expenses = this.expenses.filter(exp => {
       return exp.id !== id
     })
@@ -53,7 +83,7 @@ export class ExpenseService {
     this.save()
   }
 
-  update(exp: Expense){
+  update(exp: Expense) {
     let old = this.find(exp.id);
     old.title = exp.title;
     old.amount = exp.amount;
@@ -64,23 +94,23 @@ export class ExpenseService {
     this.save();
   }
 
-  find(id: string) : Expense {
+  find(id: string): Expense {
     return this.expenses.filter(t => t.id == id)[0];
   }
 
   //categories
-  getCategories(){
+  getCategories() {
     this.categories = []
-    this.expenses.map(exp=> {
+    this.expenses.map(exp => {
       this.categories.push(exp.category)
     })
     this.categories = [...new Set(this.categories)]
   }
 
   //total
-  getBalance(){
+  getBalance() {
     this.expenceAmounts = []
-    this.expenses.map(exp=> {
+    this.expenses.map(exp => {
       this.expenceAmounts.push(exp.amount)
     })
     console.log(this.expenceAmounts)
