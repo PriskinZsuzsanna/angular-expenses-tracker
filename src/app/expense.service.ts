@@ -13,8 +13,11 @@ export class ExpenseService {
   balance: number = 0
   filterPlus: boolean = false
   filterMinus: boolean = false
+  categoryItems:string = "all"
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    this.filter(this.categoryItems)
+  }
 
   //expenses
   load() {
@@ -32,9 +35,10 @@ export class ExpenseService {
   add(exp: Expense) {
     this.expenses.push(exp)
     this.save()
+    this.getDefaultFilter()
   }
 
-  filter(option: string) {
+  filter(option:string) {
     //this.load()
     this.filterMinus = false
     this.filterPlus = false
@@ -46,6 +50,10 @@ export class ExpenseService {
       }
 
     })
+  }
+
+  getDefaultFilter(){
+    this.categoryItems = "all"
   }
 
   showPlus() {
@@ -80,6 +88,7 @@ export class ExpenseService {
     })
     this.filteredExpenses = this.expenses
     this.getCategories()
+    this.getDefaultFilter()
     this.save()
   }
 
@@ -88,9 +97,8 @@ export class ExpenseService {
     old.title = exp.title;
     old.amount = exp.amount;
     old.category = exp.category;
-    console.log(this.expenses)
-    console.log(this.filteredExpenses)
     this.getCategories();
+    this.getDefaultFilter()
     this.save();
   }
 

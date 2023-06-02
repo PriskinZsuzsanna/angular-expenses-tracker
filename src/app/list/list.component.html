@@ -2,17 +2,15 @@
     <h2 class="title">My Balance</h2>
     <span class="balance">{{this.service.balance}}$</span>
    
-    <!--div class="buttons">
-        <button *ngIf="!this.service.filterPlus" (click)="this.service.showPlus()">Show Plus</button>
-        <button *ngIf="this.service.filterPlus" (click)="this.service.showPlus()">Show All</button>
-        <button *ngIf="!this.service.filterMinus" (click)="this.service.showMinus()">Show Minus</button>
-        <button *ngIf="this.service.filterMinus" (click)="this.service.showMinus()">Show All</button>
-    </div-->
     <div class="filter">
         <button *ngIf="!this.service.filterPlus" (click)="this.service.showPlus()">Income</button>
         <button *ngIf="this.service.filterPlus" (click)="this.service.showPlus()">Show All</button>
-        <select #categoryItems (change)="filter(categoryItems.value)" name="" id="">
+        <!--select #categoryItems (change)="filter(categoryItems.value)" name="" id="">
             <option value="all" [defaultSelected]="true">Show All Categories</option>
+            <option *ngFor="let c of this.service.categories" value="{{c}}">{{c}}</option>
+        </select-->
+        <select [(ngModel)]="this.service.categoryItems" (change)="filter(this.service.categoryItems)" name="" id="">
+            <option default value="all" [defaultSelected]="true">Show All Categories</option>
             <option *ngFor="let c of this.service.categories" value="{{c}}">{{c}}</option>
         </select>
         <button *ngIf="!this.service.filterMinus" (click)="this.service.showMinus()">Expenses</button>
