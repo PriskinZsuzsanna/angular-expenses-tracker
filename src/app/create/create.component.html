@@ -8,12 +8,26 @@
         <label>Amount</label>
         <input [(ngModel)]="actual.amount" step="100" type="number">
 
-        <label>Choose or Add Category:</label>
+        <!--label>Choose or Add Category:</label>
         <input list="categories" name="category" id="category" [(ngModel)]="this.actual.category">
     
         <datalist id="categories">
           <option *ngFor="let c of this.service.categories" value="{{c}}">{{c}}</option>
-        </datalist>
+        </datalist-->
+
+        <div *ngIf="!isAddCategory">
+          <label>Select Category: </label>
+          <select [(ngModel)]="this.actual.category">
+            <option *ngFor="let c of this.service.categories" value="{{c}}">{{c}}</option>
+          </select>
+          <button (click)="toggleAddCategory()" class="btn-small">Add new category</button>
+        </div>
+       
+        <div *ngIf="isAddCategory" >
+          <label>Add New Category: </label>
+          <input type="text" [(ngModel)]="this.actual.category">
+          <button (click)="toggleAddCategory()" class="btn-small">Select from categories</button>
+        </div>
 
         <button (click)="create()">Add Expense</button>
 

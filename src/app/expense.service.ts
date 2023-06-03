@@ -17,6 +17,7 @@ export class ExpenseService {
 
   constructor(private router: Router) { 
     this.filter(this.categoryItems)
+    this.getCategories()
   }
 
   //expenses
